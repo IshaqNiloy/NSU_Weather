@@ -1,0 +1,50 @@
+body{
+	background-image:url("../images/weather3.jpg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+img{
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+#background{
+	
+	background-color: rgba(0,0,0,0.9);
+}
+.cycle-slideshow{
+	margin-left: 0%;
+}
+
+.col-sm-8{
+	text-align: center;
+	align-items: center;
+  	justify-content: center;
+}
+
+button{
+	height: 35%;
+	background-color: black;
+	color: white;
+	border: 0px;
+	font-family: 'Montserrat';
+	letter-spacing: 3px;
+	margin-top: 45px; 
+}
+
+input{
+	background-color: rgba(0,0,0,0.2);
+	border-radius: 0%;
+	border: .5px solid black;
+	width: 59%;
+	height: 35%;
+	color: white;
+
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  padding-left: 10px;
+}
