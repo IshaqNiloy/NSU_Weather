@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Current Whather Info</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel ="stylesheet" href="css_files/index.css">
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <script src="js/cycle2.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <link rel ="stylesheet" href="css_files/index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" 
+  integrity = "sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin = "anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Gothic+A1|Inconsolata|Roboto|Montserrat|Abril+Fatface" rel="stylesheet">
+
+</head>
+<body>
+	<div class = "container-fluid">
+		<div class = "row">
+			<div class="col-sm-2">
+				<span Style="background: black; color: white; font-size: 450%">N</span>
+				<span Style="background: black; color: white; font-size: 450%; letter-spacing: 10px"> S</span>
+				<span Style="background: black; color: white; font-size: 450%">U</span><br>
+				<span style="color: White; letter-spacing: 10px; font-size: 130%; background-color: rgba(0,0,0,0.5);">WEATHER</span>
+
+			</div>
+			<div class="col-sm-8">
+				<p style="margin-top: 270px; height: 100px; margin-bottom: 0px"><input id="city" placeholder = "City Name"></input>
+		<button id="getWeatherForcast">Get Weather</button></p>
+		<div id="showWeatherForcast">
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$("#getWeatherForcast").click(function(){
+						var city = $("#city").val();
+						var key = '8cca730f8ad2b60ed4cfdcd4c512d377';
+
+						$.ajax({
+							url: 'http://api.openweathermap.org/data/2.5/weather',
+							dataType : 'json',
+							type : 'GET',
+							data : {q:city, appid: key, units: 'metric'},
+							success: function(data){
+								var wf = '';
+								$.each(data.weather, function(index, val){
+									wf += '<p style="color: white; text-align: left; font-size: 250%; margin-left: 12%; margin-top: -10px; letter-spacing: 3px;"><b>' + data.name + "</b><br>" + '</p>' + '<p style="color: white; text-align: left; font-size: 125%; margin-left: 12%; margin-top: -20px; letter-spacing: 3px;">' + data.main.temp + '&deg;C' + ' | ' + val.main + ", " + val.description + "<br>Pressure: " + data.main.pressure +"hPa"+"<br>Humidity: " + data.main.humidity + "%" + "<br>Max Temp: " + data.main.temp_min + '&deg;C' + "<br>Min Temp: " + data.main.temp_max + '&deg;C' + "<br>Wind Speed: " + data.wind.speed + "m/s" + "<br>Wind Direction: " + data.wind.deg + "&deg" + "</p>"
+								});
+								$("#showWeatherForcast").html(wf);
+							}
+						});
+					});
+				});
+			</script>
+			
+			</div>
+		</div>
+		<div class="col-sm-2" style="color: white"></div>
+		</div>
+	</div>
+	
+</body>
+</html>
