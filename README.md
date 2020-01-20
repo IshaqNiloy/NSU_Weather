@@ -1,1 +1,2 @@
-# NSU_Weather
+# NSU Weather
+<img src = "images/weather.PNG">
